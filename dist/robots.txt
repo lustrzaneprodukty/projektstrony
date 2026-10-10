@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lustrzane-produkty.peppyluck4.chatgpt.site/sitemap.xml
