@@ -212,7 +212,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 /* Treść bliżej góry: pełne przyciski także przy widocznych paskach przeglądarki. */
 @media(max-width:600px){
  .hero{min-height:0}
- .hero-content{min-height:0;padding-top:clamp(225px,calc(100svh - 365px),295px);padding-bottom:22px}
+ .hero-content{min-height:0;padding-top:clamp(270px,calc(100svh - 320px),340px);padding-bottom:22px}
  .hero-shade{background:linear-gradient(180deg,transparent 0px,transparent 170px,rgba(255,255,255,.62) 260px,rgba(255,255,255,.96) 350px,#fff 430px)}
  .hero-description{margin-top:14px}
  .hero-actions{margin-top:18px}
