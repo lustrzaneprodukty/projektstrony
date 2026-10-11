@@ -8,6 +8,9 @@ docs={
 'zwroty-i-reklamacje':('Zwroty i reklamacje',{'Odstąpienie':'Zasady, terminy, adres zwrotów, koszt odesłania, zwrot płatności i wzór formularza.','Personalizacja':'Zakres wyjątków od odstąpienia dla towarów wykonanych według specyfikacji klienta lub dla jego zindywidualizowanych potrzeb. Personalizacja nie wyłącza odpowiedzialności za niezgodność towaru z umową.','Reklamacje':'Adres i e-mail, sposób zgłoszenia, procedura, terminy odpowiedzi, uprawnienia klienta.','Spory':'Właściwe podmioty ADR i zasady udziału przedsiębiorcy.'}),
 'dane-sprzedawcy':('Dane sprzedawcy',{'Firma':'Pełna nazwa, forma prawna, NIP, CEIDG lub KRS i pozostałe wymagane dane rejestrowe.','Adres':'Siedziba, korespondencja, reklamacje i zwroty.','Kontakt':'Potwierdzenie kontaktu marki: grafiki.beauty@gmail.com, +48 883 242 299; godziny obsługi.'}),
 'zasady-opinii':('Zasady publikowania opinii',{'Pochodzenie i weryfikacja':'Sposób pozyskiwania i weryfikacji czy autor kupił lub używał produktu, dobór opinii, moderacja, zgody na publikację i ewentualne wynagrodzenie.'})}
+docs.pop('zasady-opinii', None)
+obsolete=P/'zasady-opinii/index.html'
+if obsolete.exists(): obsolete.unlink()
 links=''.join(f'<a href="/{slug}/">{esc(title)}</a>' for slug,(title,_) in docs.items())
 for slug,(title,sections) in docs.items():
  body='<section class="section container legal"><p class="eyebrow">INFORMACJE DLA KLIENTÓW</p><h1>'+title+'</h1><p class="legal-status">Dokument w przygotowaniu. Dane i pełna treść zostaną uzupełnione przed uruchomieniem sklepu internetowego.</p><nav aria-label="Dokumenty sklepu">'+links+'</nav>'+''.join('<h2>'+h+'</h2><p>'+t+' <strong>[DO UZUPEŁNIENIA]</strong></p>' for h,t in sections.items())+'</section>'
