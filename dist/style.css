@@ -33,7 +33,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 @media(min-width:1650px){.reflection-panel{min-height:300px}.reflection-content{padding:29px 24px 26px}.reflected-word{height:36px}}
 @media(max-width:1000px){.monogram-disc{width:235px}.monogram-disc>.atelier-name{font-size:33px}.monogram-stage{min-height:365px}.monogram-disc>.atelier-name>small{font-size:10px}}
 @media(max-width:800px){.personalization+.logo-panel{margin-bottom:75px}.monogram-disc{width:215px;max-width:80%}.monogram-disc>.atelier-name{font-size:30px}.monogram-stage{min-height:340px}.reflection-panel{min-height:265px;margin-bottom:0}.reflection-panel+.brand-story{margin-top:65px}.reflection-content{padding:24px 20px}.reflection-panel h2{font-size:35px}.reflected-word{font-size:43.4px;height:32px}.reflection-caption{margin-top:12px}}
-@media(max-width:600px){.personalization+.logo-panel{margin-top:0;margin-bottom:57px}.monogram-stage{min-height:295px;padding:30px 0 26px}.monogram-disc{width:205px;max-width:72%;border-radius:50%}.monogram-disc>.atelier-name{font-size:30px}.monogram-disc>.atelier-name>small{font-size:9px}.monogram-disc>small{font-size:5px;margin-top:23px}.monogram-stage>p{margin-top:24px}.reflection-panel{min-height:235px;margin-bottom:0}.reflection-content{padding:21px 12px 20px}.reflection-panel .eyebrow{font-size:6px;margin-bottom:13px}.reflection-panel h2{font-size:30px}.reflection-panel h2 em{font-size:1.24em}.reflected-word{font-size:37.2px;height:27px}.reflection-caption{font-size:8px;margin-top:10px}.reflection-panel+.brand-story{margin-top:55px}}
+@media(max-width:600px){.personalization+.logo-panel{margin-top:0;margin-bottom:57px}.monogram-stage{min-height:295px;padding:30px 0 26px}.monogram-disc{width:205px;max-width:72%;border-radius:50%}.monogram-disc>.atelier-name{font-size:30px}.monogram-disc>.atelier-name>small{font-size:9px}.monogram-disc>small{font-size:5px;margin-top:23px}.monogram-stage>p{margin-top:24px}.reflection-panel{min-height:215px;margin-bottom:0}.reflection-content{padding:17px 12px 16px}.reflection-panel .eyebrow{font-size:6px;margin-bottom:13px}.reflection-panel h2{font-size:30px}.reflection-panel h2 em{font-size:1.24em}.reflected-word{font-size:37.2px;height:27px}.reflection-caption{font-size:8px;margin-top:10px}.reflection-panel+.brand-story{margin-top:55px}}
 @media(prefers-reduced-motion:reduce){.mirror-plaque>.metal-light-sweep,.monogram-disc>.metal-light-sweep{display:none;animation:none}.hero h1 em{animation:none}}
 /* Keep the animated light inside a separate, explicitly clipped surface.
    This avoids rounded-overflow compositing artefacts on transformed Safari layers. */
@@ -57,7 +57,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 .reviews-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;font-size:10px;color:#79756d}.reviews-controls .small-btn{background:#fff;border:1px solid #dedbd4;border-radius:999px;padding:9px 15px;font-size:10px}
 .reviews-viewport{overflow:hidden;padding-block:5px;--review-width:310px;--review-gap:18px}.reviews-track{display:flex;width:max-content;gap:var(--review-gap);animation:reviews-drift 100s linear infinite}.reviews-track .review-card{width:var(--review-width);flex:0 0 var(--review-width);padding:18px 16px 14px;border-radius:16px;gap:12px}.reviews-track .review-card>div{height:130px;width:100%;display:grid;place-items:center}.reviews-track .review-card img{max-height:130px;width:100%;height:auto;object-fit:contain}.reviews-track .review-card>span{font-size:9px}.reviews-viewport:hover .reviews-track,.reviews-viewport:focus-within .reviews-track,.reviews-viewport.is-paused .reviews-track,body.modal-open .reviews-track{animation-play-state:paused}
 @keyframes reviews-drift{to{transform:translateX(calc(-50% - var(--review-gap)/2))}}
-@media(max-width:600px){.image-label{top:9px;left:8px;font-size:7px;padding:7px 9px;letter-spacing:.07em}.product-info h3{font-size:18px}.product-info .product-price{margin-top:10px;gap:4px}.product-price>span{font-size:16px}.product-price>small{font-size:9px}.collection-note{font-size:10px;margin-top:-12px;margin-bottom:22px}.process.section{padding-bottom:24px}.realizations.section{padding-top:24px}.reviews-viewport{--review-width:270px;--review-gap:14px}.reviews-controls{align-items:flex-start;font-size:9px}.reviews-controls>span{max-width:130px}.reviews-controls .small-btn{font-size:9px;white-space:nowrap}}
+@media(max-width:600px){.image-label{top:9px;left:8px;font-size:7px;padding:7px 9px;letter-spacing:.07em}.product-info h3{font-size:18px}.product-info .product-price{margin-top:10px;gap:4px}.product-price>span{font-size:16px}.product-price>small{font-size:9px}.collection-note{font-size:10px;margin-top:-12px;margin-bottom:22px}.process.section{padding-bottom:36px}.realizations.section{padding-top:36px}.reviews-viewport{--review-width:270px;--review-gap:14px}.reviews-controls{align-items:flex-start;font-size:9px}.reviews-controls>span{max-width:130px}.reviews-controls .small-btn{font-size:9px;white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){.reviews-track{animation:none}.reviews-viewport{overflow-x:auto}.reviews-track>[aria-hidden=true]{display:none}.reviews-controls{display:none}.reflection-light{opacity:.35}}
 
 /* Ujednolicenie kolekcji i galerii */
@@ -103,12 +103,12 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 }
 
 /* Subtelna korekta kadru hero wyłącznie na telefonach. */
-@media(max-width:600px){.hero{background-position:calc(86% + 20px) -26px}}
-@media(max-width:375px){.hero{background-position:calc(79% + 18px) -24px}}
+@media(max-width:600px){.hero{background-position:calc(86% + 28px) -34px}}
+@media(max-width:375px){.hero{background-position:calc(79% + 26px) -32px}}
 
 /* Ceny w kolekcji na stronie głównej: o 1 px mniejsze. */
 #produkty .product-price>span{font-size:17px}
-@media(max-width:600px){#produkty .product-price>span{font-size:16px}}
+@media(max-width:600px){#produkty .product-price>span{font-size:15px}}
 
 /* Opinie bez ramek, z większą powierzchnią wiadomości. */
 .reviews .review-card,.reviews .review-card:hover,.reviews .review-screens button,.reviews .review-screens button:hover{border:0;box-shadow:none;background:transparent}
