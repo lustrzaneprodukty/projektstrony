@@ -101,3 +101,24 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
  .product-card .product-price>small{font-size:9px;line-height:1.2;white-space:nowrap}
  .product-grid{row-gap:24px}
 }
+
+/* Subtelna korekta kadru hero wyłącznie na telefonach. */
+@media(max-width:600px){.hero{background-position:calc(86% + 12px) -18px}}
+@media(max-width:375px){.hero{background-position:calc(79% + 10px) -16px}}
+
+/* Ceny w kolekcji na stronie głównej: o 1 px mniejsze. */
+#produkty .product-price>span{font-size:17px}
+@media(max-width:600px){#produkty .product-price>span{font-size:16px}}
+
+/* Opinie bez ramek, z większą powierzchnią wiadomości. */
+.reviews .review-card,.reviews .review-card:hover,.reviews .review-screens button,.reviews .review-screens button:hover{border:0;box-shadow:none;background:transparent}
+.reviews .reviews-viewport{--review-width:330px;--review-gap:24px}
+.reviews .reviews-track .review-card{padding:8px 2px 10px;gap:10px;border-radius:0}
+.reviews .reviews-track .review-card>div{height:150px;max-height:none}
+.reviews .reviews-track .review-card img{max-height:150px}
+.reviews .review-screens button{padding:8px 2px}
+@media(max-width:600px){
+ .reviews .reviews-viewport{--review-width:290px;--review-gap:20px}
+ .reviews .reviews-track .review-card>div{height:145px}
+ .reviews .reviews-track .review-card img{max-height:145px}
+}
