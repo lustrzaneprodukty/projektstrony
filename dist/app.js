@@ -56,26 +56,3 @@ $$('[data-tilt-stage], [data-reflection]').forEach(stage=>{
 });
 
 })();
-
-// Decorative video: allow pausing and respect reduced-motion preferences.
-(() => {
- const video = document.querySelector('.personal-video');
- const toggle = document.querySelector('.personal-video-toggle');
- if (!video || !toggle) return;
- const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
- const update = () => {
-  toggle.textContent = video.paused ? 'Odtwórz' : 'Pauza';
-  toggle.setAttribute('aria-label', video.paused ? 'Odtwórz film' : 'Wstrzymaj film');
- };
- const play = () => video.play().catch(update);
- video.addEventListener('play', update);
- video.addEventListener('pause', update);
- toggle.addEventListener('click', () => video.paused ? play() : video.pause());
- const applyMotion = () => {
-  video.autoplay = !motion.matches;
-  if (motion.matches) video.pause(); else play();
-  update();
- };
- motion.addEventListener('change', applyMotion);
- applyMotion();
-})();

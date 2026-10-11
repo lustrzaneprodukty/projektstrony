@@ -186,6 +186,3 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 
 /* Film w sekcji personalizacji — ten sam kadr i zaokrąglenie co zdjęcia. */
 .personal-image .personal-video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 60%;border-radius:inherit}
-.personal-video-toggle{position:absolute;right:16px;bottom:16px;border:1px solid #ffffff80;border-radius:999px;padding:8px 15px;background:#ffffffe6;color:#514730;font:11px/1.4 var(--sans);cursor:pointer;backdrop-filter:blur(8px)}
-.personal-video-toggle:hover{background:#fff}
-.personal-video-toggle:focus-visible{outline:2px solid var(--gold-text);outline-offset:3px}
