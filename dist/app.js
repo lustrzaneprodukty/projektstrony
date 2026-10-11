@@ -32,7 +32,7 @@ if('IntersectionObserver'in window){const activeObserver=new IntersectionObserve
 // A single damped light source follows the pointer; no sparkles or particle effects.
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
-$$('[data-tilt-stage]').forEach(stage=>{
+$$('[data-tilt-stage], [data-reflection]').forEach(stage=>{
  const object=$('[data-tilt-object]',stage)||stage;
  let x=0,y=0,tx=0,ty=0,light=0,targetLight=0,frame=0;
  function draw(){

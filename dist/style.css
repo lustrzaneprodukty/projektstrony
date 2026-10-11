@@ -129,3 +129,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 .reflection-content{z-index:1}
 @media(max-width:600px){.hero-description{max-width:330px}.hero-shade{background:linear-gradient(180deg,transparent 0%,transparent 49%,rgba(248,248,246,.85) 64%,#f8f8f6 82%)}}
 @media(prefers-reduced-motion:reduce){.custom-copy h2 em,.personal-copy h2 em{animation:none}}
+
+/* Subtle cursor glow accompanies the existing automatic light sweep. */
+.reflection-panel>.reflection-light{z-index:0;background:radial-gradient(ellipse 20% 41% at var(--mx,50%) var(--my,45%),#fffef5b3 0%,#fff7d770 26%,#ffedb326 49%,transparent 78%);opacity:calc(var(--shine,0)*.48);mix-blend-mode:screen}
+@media(prefers-reduced-motion:reduce){.reflection-panel>.reflection-light{display:none}}
