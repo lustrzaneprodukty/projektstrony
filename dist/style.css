@@ -89,3 +89,15 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 #realizacje .realization-gallery .gallery-item:hover img{transform:none;filter:brightness(1.025)}
 @media(max-width:1000px){#realizacje .realization-gallery{columns:3;column-gap:16px}#realizacje .realization-gallery .gallery-item{margin-bottom:16px}}
 @media(max-width:700px){#realizacje .realization-gallery{columns:2;column-gap:12px}#realizacje .realization-gallery .gallery-item{margin-bottom:12px;border-radius:13px}}
+
+/* Mobilne karty: treść bez pustych, zarezerwowanych wierszy. */
+@media(max-width:600px){
+ .product-card .product-info{padding:10px 1px 0}
+ .product-card .product-info .product-category{margin:0 0 5px;line-height:1.35}
+ .product-card .product-info h3{min-height:0;height:auto;margin:0;font-size:18px;line-height:1.18}
+ .product-card .product-info>p:not(.product-category){min-height:0;height:auto;margin:6px 0 0;font-size:11px;line-height:1.4}
+ .product-card .product-info .product-price{margin:8px 0 0;gap:4px;line-height:1.2;flex-wrap:wrap;row-gap:2px}
+ .product-card .product-price>span{font-size:17px;line-height:1.2}
+ .product-card .product-price>small{font-size:9px;line-height:1.2;white-space:nowrap}
+ .product-grid{row-gap:24px}
+}
