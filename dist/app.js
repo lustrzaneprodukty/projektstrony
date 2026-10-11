@@ -13,7 +13,7 @@ $$('[data-soon]').forEach(b=>b.addEventListener('click',()=>{const m=messages[b.
 function searchResults(){const q=normalize($('#global-search').value.trim());const list=CATALOG.filter(p=>normalize(p.name+' '+p.category).includes(q));$('#search-results').innerHTML=list.length?list.map(p=>`<a class="search-result" href="/produkty/${p.slug}/"><img src="${p.image}" alt="" width="55" height="64"><span><strong>${escape(p.name)}</strong><small>${escape(p.category)} · personalizacja</small></span></a>`).join(''):'<p>Nie znaleziono produktu. Spróbuj hasła „voucher” lub „tablica”.</p>'}
 $$('[data-search]').forEach(b=>b.addEventListener('click',()=>{searchResults();openDialog($('#search-dialog'));$('#global-search').focus()}));$('#global-search').addEventListener('input',searchResults);
 const partner=$('#partner-logos');if(partner)partner.innerHTML=[...PARTNERS].sort((a,b)=>['infini','mmgold','lumiere','carpatee','dives','schulke','clavier'].indexOf(a.name)-['infini','mmgold','lumiere','carpatee','dives','schulke','clavier'].indexOf(b.name)).map(p=>`<img src="${p.image}" alt="${escape(p.name)}" width="130" height="55" loading="lazy">`).join('');
-const screens=$('#review-screens');if(screens)screens.innerHTML=REVIEWS.slice(10).map((src,i)=>`<button data-gallery="opinie" data-src="${src}" aria-label="Powiększ oryginalną opinię ${i+11}"><img src="${src}" alt="Oryginalna wiadomość klienta — opinia ${i+11}" loading="lazy" width="700" height="280"><span>Powiększ wiadomość ↗</span></button>`).join('');
+const screens=$('#review-screens');if(screens)screens.innerHTML=REVIEWS.slice(10).map((src,i)=>`<button data-gallery="opinie" data-src="${src}" aria-label="Powiększ oryginalną opinię ${i+11}"><img src="${src}" alt="Oryginalna wiadomość klienta — opinia ${i+11}" loading="lazy" width="700" height="280"></button>`).join('');
 // Duplicate only visual cards; keep the original gallery accessible.
 const track=$('.reviews-track'),viewport=$('.reviews-viewport'),pause=$('#toggle-reviews');
 if(track){
@@ -32,7 +32,7 @@ if('IntersectionObserver'in window){const activeObserver=new IntersectionObserve
 // A single damped light source follows the pointer; no sparkles or particle effects.
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
-$$('[data-tilt-stage], [data-reflection]').forEach(stage=>{
+$$('[data-tilt-stage]').forEach(stage=>{
  const object=$('[data-tilt-object]',stage)||stage;
  let x=0,y=0,tx=0,ty=0,light=0,targetLight=0,frame=0;
  function draw(){
