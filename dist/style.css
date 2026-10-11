@@ -192,7 +192,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 
 /* Czytelniejszy pierwszy ekran na telefonie, z miękką białą poświatą. */
 @media(max-width:600px){
- .hero{height:auto;min-height:660px;background-color:#fff;background-size:auto 600px;background-position:calc(86% + 36px) -80px}
+ .hero{height:auto;min-height:660px;background-color:#fff;background-size:auto 600px;background-position:calc(86% + 36px) -70px}
  .hero-shade{background:linear-gradient(180deg,transparent 0px,transparent 240px,rgba(255,255,255,.45) 325px,rgba(255,255,255,.92) 420px,#fff 510px)}
  .hero-content{height:auto;min-height:660px;padding-top:330px;padding-bottom:28px;justify-content:flex-end}
  .hero h1{font-size:clamp(34px,10.5vw,46px);line-height:1.08;letter-spacing:-.05em;max-width:100%}
@@ -203,7 +203,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
  .hero-actions .btn svg{width:17px;flex-shrink:0}
 }
 @media(max-width:375px){
- .hero{background-position:calc(79% + 34px) -78px}
+ .hero{background-position:calc(79% + 34px) -68px}
  .hero-actions{gap:8px}
  .hero-actions .btn{font-size:10px;padding-inline:8px;gap:6px}
  .hero-actions .btn svg{width:15px}
@@ -212,7 +212,7 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 /* Treść bliżej góry: pełne przyciski także przy widocznych paskach przeglądarki. */
 @media(max-width:600px){
  .hero{min-height:0}
- .hero-content{min-height:0;padding-top:clamp(180px,calc(100svh - 410px),250px);padding-bottom:22px}
+ .hero-content{min-height:0;padding-top:clamp(225px,calc(100svh - 365px),295px);padding-bottom:22px}
  .hero-shade{background:linear-gradient(180deg,transparent 0px,transparent 170px,rgba(255,255,255,.62) 260px,rgba(255,255,255,.96) 350px,#fff 430px)}
  .hero-description{margin-top:14px}
  .hero-actions{margin-top:18px}
