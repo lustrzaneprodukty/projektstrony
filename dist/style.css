@@ -103,8 +103,8 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 }
 
 /* Subtelna korekta kadru hero wyłącznie na telefonach. */
-@media(max-width:600px){.hero{background-position:calc(86% + 28px) -34px}}
-@media(max-width:375px){.hero{background-position:calc(79% + 26px) -32px}}
+@media(max-width:600px){.hero{background-position:calc(86% + 36px) -42px}}
+@media(max-width:375px){.hero{background-position:calc(79% + 34px) -40px}}
 
 /* Ceny w kolekcji na stronie głównej: o 1 px mniejsze. */
 #produkty .product-price>span{font-size:17px}
