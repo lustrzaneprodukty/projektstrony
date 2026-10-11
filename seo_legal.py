@@ -1,20 +1,15 @@
 import os
+from legal_content import DOCS
 BASE=os.environ.get('SITE_URL','https://lustrzane-produkty.peppyluck4.chatgpt.site').rstrip('/')
-docs={
-'regulamin':('Regulamin sklepu',{'Sprzedawca':'Nazwa, forma prawna, NIP, rejestr, adres siedziby i kontakt.','Zamówienia':'Sposób składania zamówień, moment zawarcia umowy, akceptacja projektu, personalizacja, poprawianie błędów, potwierdzenie umowy.','Warunki sprzedaży':'Ceny brutto, podatki, płatności, dodatkowe koszty, realizacja i dostawa.','Prawa klienta':'Reklamacje, odstąpienie, wyjątki, wzór formularza i pozasądowe rozwiązywanie sporów.','Usługi elektroniczne':'Zakres usług, wymagania techniczne, zakaz treści bezprawnych, reklamacje usług i zasady zmian regulaminu.'}),
-'prywatnosc':('Polityka prywatności',{'Administrator':'Pełna nazwa i adres, kontakt w sprawach danych oraz inspektor, jeśli dotyczy.','Cele i podstawy':'Cele, podstawy prawne, zakres danych, obowiązek podania i skutki odmowy.','Odbiorcy danych':'Hosting, poczta, księgowość, przewoźnicy i płatności; okresy przechowywania, transfery poza EOG i zabezpieczenia.','Prawa osób':'Dostęp, sprostowanie, usunięcie, ograniczenie, przenoszenie, sprzeciw, cofnięcie zgody, skarga do Prezesa UODO, profilowanie i automatyczne decyzje.'}),
-'cookies':('Polityka cookies',{'Stan obecny':'Frontend nie instaluje własnych cookies analitycznych ani reklamowych. Hosting wymaga osobnej weryfikacji.','Wykaz technologii':'Dostawcy, nazwy, cele i czas działania cookies docelowego hostingu. Po dodaniu opcjonalnej analityki lub reklamy wymagane będzie zarządzanie zgodą przed ich uruchomieniem i możliwość wycofania zgody.'}),
-'dostawa-i-platnosci':('Dostawa i płatności',{'Płatności':'Metody, operatorzy, waluta, terminy zapłaty.','Dostawa':'Przewoźnicy, obszar, koszty brutto, odbiór osobisty.','Terminy':'Czas projektu, akceptacji, produkcji i transportu.'}),
-'zwroty-i-reklamacje':('Zwroty i reklamacje',{'Odstąpienie':'Zasady, terminy, adres zwrotów, koszt odesłania, zwrot płatności i wzór formularza.','Personalizacja':'Zakres wyjątków od odstąpienia dla towarów wykonanych według specyfikacji klienta lub dla jego zindywidualizowanych potrzeb. Personalizacja nie wyłącza odpowiedzialności za niezgodność towaru z umową.','Reklamacje':'Adres i e-mail, sposób zgłoszenia, procedura, terminy odpowiedzi, uprawnienia klienta.','Spory':'Właściwe podmioty ADR i zasady udziału przedsiębiorcy.'}),
-'dane-sprzedawcy':('Dane sprzedawcy',{'Firma':'Pełna nazwa, forma prawna, NIP, CEIDG lub KRS i pozostałe wymagane dane rejestrowe.','Adres':'Siedziba, korespondencja, reklamacje i zwroty.','Kontakt':'Potwierdzenie kontaktu marki: grafiki.beauty@gmail.com, +48 883 242 299; godziny obsługi.'}),
-'zasady-opinii':('Zasady publikowania opinii',{'Pochodzenie i weryfikacja':'Sposób pozyskiwania i weryfikacji czy autor kupił lub używał produktu, dobór opinii, moderacja, zgody na publikację i ewentualne wynagrodzenie.'})}
-docs.pop('zasady-opinii', None)
-obsolete=P/'zasady-opinii/index.html'
-if obsolete.exists(): obsolete.unlink()
-links=''.join(f'<a href="/{slug}/">{esc(title)}</a>' for slug,(title,_) in docs.items())
-for slug,(title,sections) in docs.items():
- body='<section class="section container legal"><p class="eyebrow">INFORMACJE DLA KLIENTÓW</p><h1>'+title+'</h1><p class="legal-status">Dokument w przygotowaniu. Dane i pełna treść zostaną uzupełnione przed uruchomieniem sklepu internetowego.</p><nav aria-label="Dokumenty sklepu">'+links+'</nav>'+''.join('<h2>'+h+'</h2><p>'+t+' <strong>[DO UZUPEŁNIENIA]</strong></p>' for h,t in sections.items())+'</section>'
- d=P/slug;d.mkdir(exist_ok=True);(d/'index.html').write_text(shell(title+' — Lustrzane Produkty',title+' i informacje dla klientów.',body,'/'+slug+'/'))
+docs=DOCS
+links=''.join(f'<a href="/{slug}/">{esc(data["title"])}</a>' for slug,data in docs.items())
+status='<aside class="legal-status"><strong>Wersja do uruchomienia sklepu.</strong> Dokumenty zawierają przygotowane zasady docelowej sprzedaży. Pola oznaczone „UZUPEŁNIJ” wymagają danych Sprzedawcy lub potwierdzenia warunków operacyjnych. Koszyk i płatności nie są jeszcze uruchomione.</aside>'
+for slug,data in docs.items():
+ title=data['title']
+ toc='<nav class="legal-toc" aria-label="Spis treści">'+''.join(f'<a href="#punkt-{i}">{esc(h)}</a>' for i,(h,t) in enumerate(data['sections'],1))+'</nav>'
+ content=''.join(f'<section id="punkt-{i}" class="legal-section"><h2>{esc(h)}</h2>{t}</section>' for i,(h,t) in enumerate(data['sections'],1))
+ body='<article class="section container legal legal-document"><p class="eyebrow">PRZEJRZYSTE ZASADY</p><h1>'+esc(title)+'</h1><p class="legal-lead">'+esc(data['intro'])+'</p>'+status+'<p class="legal-version">Opracowanie: 11.10.2026 · wersja redakcyjna 1.0</p>'+toc+content+'<nav class="legal-related" aria-label="Dokumenty sklepu">'+links+'</nav></article>'
+ d=P/slug;d.mkdir(exist_ok=True);(d/'index.html').write_text(shell(title+' — Lustrzane Produkty',data['intro'],body,'/'+slug+'/'))
 for file in P.rglob('*.html'):
  s=file.read_text().replace('https://lustrzane-produkty.peppyluck4.chatgpt.site',BASE)
  s=s.replace('<div class="container footer-bottom">','<nav class="container footer-documents" aria-label="Informacje sklepu">'+links+'</nav><div class="container footer-bottom">')
@@ -32,3 +27,16 @@ for file in P.rglob('*.html'):
 urls=['/']+['/produkty/'+p['slug']+'/' for p in products]
 (P/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(BASE+u)+'</loc></url>' for u in urls)+'</urlset>')
 (P/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+BASE+'/sitemap.xml\n')
+
+# Zbiorcza, samodzielna wersja do przeglądania i wydruku; poza katalogiem hostingu.
+print_style='''body{max-width:940px;margin:50px auto;padding:0 24px;color:#24231f;font:16px/1.75 system-ui,sans-serif}h1{font-size:38px;line-height:1.15}h2{font-size:30px;line-height:1.25;margin-top:55px}h3{font-size:21px;line-height:1.4;margin-top:32px}a{color:#72541e}li{margin-bottom:9px}.legal-status{padding:20px;background:#faf4e5;border:1px solid #d6c498}.legal-table-wrap{overflow-x:auto}table{border-collapse:collapse;font-size:13px;width:100%;min-width:550px}td,th{padding:12px;border:1px solid #ccc;vertical-align:top;text-align:left}th{background:#f5f1e8}.legal-form{border:1px solid #ccc;padding:20px}.document{border-top:1px solid #c8b994;margin-top:50px}@media print{body{margin:0;max-width:none;font-size:10pt}h1{font-size:25pt}h2{font-size:21pt}h3{font-size:14pt;break-after:avoid}.document{break-before:page;border:0}.legal-table-wrap{overflow:visible}table{min-width:0;font-size:9pt}tr{break-inside:avoid}a{color:#000}}'''
+all_docs=''
+for slug,data in DOCS.items():
+ content=''.join('<h3>'+esc(h)+'</h3>'+t for h,t in data['sections'])
+ content=re.sub(r'id="([^"]+)"',lambda m:'id="'+slug+'-'+m.group(1)+'"',content)
+ all_docs+='<article class="document" id="'+slug+'"><h2>'+esc(data['title'])+'</h2><p>'+esc(data['intro'])+'</p>'+content+'</article>'
+# Wersja zbiorcza używa lokalnych odnośników, a nie nieistniejących ścieżek serwera.
+all_docs=re.sub(r'href="/([^/]+)/#([^"]+)"',lambda m:'href="#'+m.group(1)+'-'+m.group(2)+'"',all_docs)
+all_docs=re.sub(r'href="/([^/]+)/"',lambda m:'href="#'+m.group(1)+'"',all_docs)
+Path('dokumentacja').mkdir(exist_ok=True)
+Path('dokumentacja/Dokumenty-sklepu.html').write_text('<!doctype html><html lang="pl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dokumenty sklepu — Lustrzane Produkty</title><style>'+print_style+'</style><body><h1>Lustrzane Produkty<br>Dokumenty sklepu</h1><p>Wersja redakcyjna 1.0 · 11.10.2026</p>'+status+'<p>Przygotowano dla sprzedaży produktów fizycznych, w tym personalizowanych. Przed uruchomieniem wymagane są uzupełnienie danych, dopasowanie do rzeczywistych procesów oraz końcowy przegląd prawny. Instrukcja i źródła: PRZED-URUCHOMIENIEM.md.</p><nav><ol>'+''.join('<li><a href="#'+slug+'">'+esc(data['title'])+'</a></li>' for slug,data in DOCS.items())+'</ol></nav>'+all_docs+'</body></html>')

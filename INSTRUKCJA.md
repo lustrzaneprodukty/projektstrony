@@ -50,3 +50,11 @@ Refleks na obu emblematach działa automatycznie co 6,5 sekundy. Wydzielone mask
 Usunięto kategorie, wyszukiwanie i sortowanie w sekcji kolekcji, napis nad nagłówkiem oraz formularz po FAQ. Kontakt prowadzi do stopki; formularze konkretnych produktów pozostają dostępne. Białe kapsułki, mniejsze nazwy i ceny są wspólne dla wszystkich kart. Ceny są wyłącznie przykładowe i wymagają zastąpienia prawdziwym cennikiem. Etykiety BESTSELLER również można edytować w products.json.
 
 Opinie przesuwają się powoli; zatrzymują się po najechaniu, ustawieniu fokusu, otwarciu zdjęcia lub użyciu przycisku pauzy. Ograniczenie animacji w systemie wyłącza przewijanie.
+
+## Dokumenty sklepu — v13
+
+Dodano 12 rozbudowanych podstron prawnych i informacyjnych. Ich treść edytuje się w `legal_content.py`, a następnie uruchamia `python build.py`. Dokumenty mają status wersji do uruchomienia sklepu — nie są dowodem uruchomienia płatności ani pełnej zgodności.
+
+Folder `dokumentacja/` zawiera `Dokumenty-sklepu.html` (całość do czytania i wydruku), `PRZED-URUCHOMIENIEM.md` (dane, wymagania wdrożenia i źródła) oraz `TEKSTY-DO-WDROZENIA.md` (koszyk, e-maile i dobrowolne zgody). Nie wgrywaj folderu dokumentacja jako publicznych podstron.
+
+Uzupełnij wszystkie pola `[UZUPEŁNIJ: ...]`, dopasuj rzeczywiste usługi i wykonaj końcową kontrolę prawną oraz techniczną przed startem. Zmiana dokumentów nie włączy koszyka, płatności, panelu cookies ani automatycznych e-maili.

@@ -133,3 +133,28 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 /* Subtle cursor glow accompanies the existing automatic light sweep. */
 .reflection-panel>.reflection-light{z-index:0;background:radial-gradient(ellipse 20% 41% at var(--mx,50%) var(--my,45%),#fffef5b3 0%,#fff7d770 26%,#ffedb326 49%,transparent 78%);opacity:calc(var(--shine,0)*.48);mix-blend-mode:screen}
 @media(prefers-reduced-motion:reduce){.reflection-panel>.reflection-light{display:none}}
+
+/* Dokumenty sklepu — czytelna typografia i nawigacja. */
+.legal-document{max-width:980px;padding-top:70px;padding-bottom:80px;overflow-wrap:anywhere}
+.legal-document h1{font-size:clamp(36px,5vw,64px);line-height:1.08;max-width:850px}
+.legal-document .legal-lead{font-size:17px;color:#5f5c55;margin-top:23px;max-width:760px}
+.legal-document .legal-status{padding:20px 24px;background:#f8f3e8;border:1px solid #d8c59a;border-radius:14px;color:#544831;font:14px/1.7 var(--sans);margin:26px 0}
+.legal-document .legal-status strong{display:block;margin-bottom:4px}
+.legal-document .legal-version{font-size:12px;color:#69655e}
+.legal-toc,.legal-related{display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;margin:30px 0;padding:24px;background:#f7f7f5;border-radius:14px}
+.legal-document nav a{font-size:13px;line-height:1.5;color:#50432c;text-decoration:underline;text-underline-offset:3px}
+.legal-document .legal-section{margin-top:42px;scroll-margin-top:110px}
+.legal-document h2{font:500 clamp(21px,2.5vw,27px)/1.35 var(--sans);letter-spacing:-.025em;margin:0 0 18px;color:#292720}
+.legal-document p,.legal-document li{font:15px/1.85 var(--sans);color:#47453f;max-width:none;margin:0 0 16px}
+.legal-document ul{padding-left:24px;margin:18px 0}.legal-document li{padding-left:5px;margin-bottom:12px}
+.legal-document p a,.legal-document li a{color:#71521d;text-decoration:underline;text-underline-offset:3px}
+.legal-table-wrap{overflow-x:auto;margin:20px 0}.legal-document table{border-collapse:collapse;width:100%;min-width:600px;font:13px/1.65 var(--sans)}
+.legal-document th,.legal-document td{border:1px solid #dedbd3;padding:15px;text-align:left;vertical-align:top}.legal-document th{background:#f7f3e9;color:#493d27;font-weight:600}
+.legal-form{background:#fafaf8;border:1px solid #d9d5ca;border-radius:12px;padding:25px;margin:20px 0}.legal-form p{font-size:14px;white-space:normal}
+.footer-documents{display:flex;flex-wrap:wrap;gap:14px 24px;padding-block:24px;border-top:1px solid #ffffff24}.footer-documents a{font:11px/1.5 var(--sans);color:#c4c1b9}.footer-documents a:hover{color:#ead092}
+@media(max-width:600px){.legal-document{padding-top:40px}.legal-document .legal-lead{font-size:15px}.legal-document .legal-status{padding:17px;font-size:13px}.legal-toc,.legal-related{grid-template-columns:1fr;padding:19px;gap:12px}.legal-document p,.legal-document li{font-size:14px;line-height:1.8}.legal-document .legal-section{margin-top:32px}.legal-form{padding:17px}.footer-documents{gap:14px 18px}}
+@media print{body:has(.legal-document) .header,body:has(.legal-document) footer,body:has(.legal-document) dialog,.legal-toc,.legal-related{display:none!important}.legal-document{width:100%;max-width:none;padding:0}.legal-document h1{font-size:28pt}.legal-document h2{font-size:16pt;break-after:avoid}.legal-document p,.legal-document li{font-size:10pt}.legal-table-wrap{overflow:visible}.legal-document table{min-width:0;font-size:9pt}.legal-document tr{break-inside:avoid}.legal-document a{color:#000}}
+
+/* Wyśrodkowany dwuwierszowy napis na srebrnym emblemacie. */
+.monogram-disc>.atelier-name{margin:0;left:0;text-align:center;padding-left:.045em}
+.monogram-disc>.atelier-name>small{margin-left:0;padding-left:.4em;text-align:center}
