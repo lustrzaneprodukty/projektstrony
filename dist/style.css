@@ -158,3 +158,10 @@ h1 em,h2 em{color:var(--gold-text)}.hero h1 em{color:var(--gold-text);background
 /* Wyśrodkowany dwuwierszowy napis na srebrnym emblemacie. */
 .monogram-disc>.atelier-name{margin:0;left:0;text-align:center;padding-left:.045em}
 .monogram-disc>.atelier-name>small{margin-left:0;padding-left:.4em;text-align:center}
+
+/* Jednowierszowe logo Montserrat zgodne z wzorem. */
+@font-face{font-family:MontserratLogo;src:url('/assets/montserrat-logo.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+.header .brand{display:block;line-height:1;min-width:0}
+.header .brand>span{display:block;font-family:MontserratLogo,sans-serif;font-weight:400;font-style:normal;font-size:22px;letter-spacing:.12em;line-height:1.2;white-space:nowrap}
+@media(min-width:901px) and (max-width:1100px){.header .brand>span{font-size:17px;letter-spacing:.1em}.header-inner{gap:20px}}
+@media(max-width:600px){.header .brand>span{font-size:clamp(9px,3vw,16px);letter-spacing:.1em}.header-inner{gap:10px}.header-actions{flex-shrink:0}}
