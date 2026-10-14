@@ -1,60 +1,28 @@
-# LUSTRZANE PRODUKTY — pliki strony
+# Lustrzane Produkty — frontend, 14.10.2026
 
-Aktualna wersja z 11 października 2026, zawierająca ostatnie poprawki: nowe złoto, niższy panel odbicia, okrągły emblemat ATELIER BEAUTY, refleksy, białe opinie, zmieniony FAQ i kontakt w stopce.
+Pełny projekt obejmuje źródła, zasoby i wygenerowany katalog `dist/` (29 stron HTML). Szczegóły zmian, testów i ograniczeń: `dokumentacja/RAPORT-FINALIZACJI.md`.
 
-## Zawartość
-- `dist/` — kompletna strona gotowa na hosting: HTML, CSS, JavaScript, zdjęcia WebP i lokalne fonty. Obejmuje stronę główną, 15 stron produktów, prywatność i stronę 404.
-- `build.py` — źródłowe szablony HTML i generator stron (Python 3, bez dodatkowych bibliotek).
-- `products.json` — katalog produktów.
-- `FONT-LICENSE.txt` — licencja fontów.
-- `URUCHOM-WINDOWS.bat` / `uruchom-mac-linux.sh` — lokalny podgląd.
+## Podgląd i edycja
 
-## Jak obejrzeć stronę na komputerze
-1. Rozpakuj całe archiwum.
-2. Zainstaluj Python 3, jeśli nie jest dostępny.
-3. Otwórz terminal w folderze z tą instrukcją i wykonaj:
+W katalogu projektu uruchom `python -m http.server 8080 --directory dist` i otwórz http://localhost:8080. Nie otwieraj HTML przez dwuklik. W macOS/Linux polecenie może nazywać się `python3`.
 
-   python -m http.server 8080 --directory dist
+- `build.py`: sekcje, FAQ, szablony stron i stopka.
+- `legal_content.py`: treści prawne i informacyjne.
+- `seo_legal.py`: metadane, dane strukturalne, mapa strony i zbiorcze dokumenty.
+- `product_content.py`: renderowanie danych GPSR.
+- `products.json`: wymienny katalog demonstracyjny.
+- `dist/style.css`, `dist/app.js`, `dist/assets/`: style, interakcje i media; generator ich nie odtwarza z osobnego katalogu źródłowego. Zachowaj cały projekt.
 
-   Na macOS/Linux użyj `python3`, jeśli komenda `python` nie działa.
-4. Wejdź w przeglądarce na http://localhost:8080
-5. Serwer zatrzymasz skrótem Ctrl+C.
+Po zmianach uruchom `python build.py`, następnie `python verify.py`. Generator nadpisuje HTML oraz aktualizuje `dist/data.js`. Python nie potrzebuje dodatkowych bibliotek. Nie publikuj katalogu źródłowego ani dokumentacji technicznej; hosting otrzymuje wyłącznie zawartość `dist/`.
 
-Możesz też użyć dołączonego skryptu dla swojego systemu. Nie uruchamiaj strony przez dwuklik pliku HTML — ścieżki zasobów zaczynają się od `/` i wymagają serwera HTTP.
+## Domena
 
-## Jak wgrać stronę na hosting
-Wgraj ZAWARTOŚĆ folderu `dist` do głównego katalogu domeny (np. public_html). `index.html` ma znaleźć się bezpośrednio w katalogu głównym, nie w podfolderze dist. Hosting powinien obsługiwać index.html w podkatalogach. Plik `404.html` można ustawić jako stronę błędu 404 w panelu hostingu.
+Domyślnie nie ma canonical, og:url ani sitemap z niepotwierdzonym adresem. Aby je wygenerować, ustaw zmienną środowiskową `SITE_URL` na potwierdzony adres HTTPS domeny, bez końcowej ścieżki, i uruchom generator. Nie wpisuj adresu testowego do źródeł.
 
-Nie jest potrzebny Node.js, npm, baza danych ani backend. Pliki nie zawierają kont, kluczy dostępu ani konfiguracji prywatnego hostingu.
+Sitemap obejmuje stronę główną, stałe podstrony oraz tylko produkty z `published: true`. Bez domeny `robots.txt` dopuszcza indeksowanie, bez wpisu Sitemap. Tylko strona błędu 404 ma noindex. Hosting musi sam zwracać kod HTTP 404 dla nieistniejących tras.
 
-Przed publikacją pod własną domeną zamień adres `https://lustrzane-produkty.peppyluck4.chatgpt.site` na docelowy adres w `build.py`, a następnie uruchom `python build.py`. Zaktualizuje to adresy canonical, Open Graph, robots.txt i sitemap.xml. Wgranie plików na publiczny hosting udostępni je publicznie — archiwum nie zawiera mechanizmu logowania obecnego podglądu prywatnego.
+## Zakres funkcji
 
-## Edycja
-- Wygląd i animacje: `dist/style.css`.
-- Interakcje i formularze: `dist/app.js`.
-- Treści sekcji i FAQ: `build.py`, potem `python build.py`.
-- Katalog, przykładowe ceny (`price`) i etykiety (`badge`): `products.json`, potem `python build.py`. Generator synchronizuje też wyszukiwarkę w nagłówku.
-- Zdjęcia i fonty: `dist/assets/`.
+Katalog, wyszukiwarka, galeria, dialogi informacyjne i linki e-mail działają bez backendu. Kod formularza przygotowuje wiadomość lokalnie; nie wysyła jej sam. Aktualne szablony nie wyświetlają formularza zapytania — główną drogą kontaktu jest e-mail. Nie ma aktywnych kont, checkoutu, Stripe, konfiguratora 3D ani przesyłania plików do serwera.
 
-Nie edytuj wygenerowanego HTML, jeśli zamierzasz później uruchamiać generator — nadpisze ręczne zmiany w HTML.
-
-## Zakres działania
-Formularz przygotowuje wiadomość do wysłania przez aplikację pocztową użytkownika, nie wysyła wiadomości serwerowo. Koszyk, płatności, konta, kreatory i podgląd personalizacji 3D nie są wdrożone. Obracające się emblematy to prezentacyjne efekty CSS reagujące na kursor. Treść FAQ została wstawiona zgodnie z dostarczonym tekstem właściciela; opis podglądu w FAQ dotyczy planowanej funkcji.
-
-Pliki są gotowe do dalszego rozwijania. Kontrole odnośników i kodu wykonano; wizualne testy we wszystkich docelowych przeglądarkach pozostają do wykonania. Przed rozpoczęciem sprzedaży uzupełnij dane administratora i dokumenty sklepu.
-
-## Ostatnia poprawka efektów
-Refleks na obu emblematach działa automatycznie co 6,5 sekundy. Wydzielone maski ograniczają światło do obrysu powierzchni, w tym okrągłego emblematu ATELIER BEAUTY. Ustawienie ograniczonych animacji wyłącza ruch.
-
-## Aktualizacja wyglądu
-Usunięto kategorie, wyszukiwanie i sortowanie w sekcji kolekcji, napis nad nagłówkiem oraz formularz po FAQ. Kontakt prowadzi do stopki; formularze konkretnych produktów pozostają dostępne. Białe kapsułki, mniejsze nazwy i ceny są wspólne dla wszystkich kart. Ceny są wyłącznie przykładowe i wymagają zastąpienia prawdziwym cennikiem. Etykiety BESTSELLER również można edytować w products.json.
-
-Opinie przesuwają się powoli; zatrzymują się po najechaniu, ustawieniu fokusu, otwarciu zdjęcia lub użyciu przycisku pauzy. Ograniczenie animacji w systemie wyłącza przewijanie.
-
-## Dokumenty sklepu — v13
-
-Dodano 12 rozbudowanych podstron prawnych i informacyjnych. Ich treść edytuje się w `legal_content.py`, a następnie uruchamia `python build.py`. Dokumenty mają status wersji do uruchomienia sklepu — nie są dowodem uruchomienia płatności ani pełnej zgodności.
-
-Folder `dokumentacja/` zawiera `Dokumenty-sklepu.html` (całość do czytania i wydruku), `PRZED-URUCHOMIENIEM.md` (dane, wymagania wdrożenia i źródła) oraz `TEKSTY-DO-WDROZENIA.md` (koszyk, e-maile i dobrowolne zgody). Nie wgrywaj folderu dokumentacja jako publicznych podstron.
-
-Uzupełnij wszystkie pola `[UZUPEŁNIJ: ...]`, dopasuj rzeczywiste usługi i wykonaj końcową kontrolę prawną oraz techniczną przed startem. Zmiana dokumentów nie włączy koszyka, płatności, panelu cookies ani automatycznych e-maili.
+Przed rozpoczęciem sprzedaży należy zamknąć kwestie wskazane w raporcie. Dokumenty opisują znany zakres działania; nie stanowią potwierdzenia audytu procesów spółki ani infrastruktury produkcyjnej.
