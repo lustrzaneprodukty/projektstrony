@@ -20,7 +20,7 @@ for path,page in pages.items():
  if (page.h1,page.titles,page.desc)!=(1,1,1):errors.append(f'{path}: H1/title/description')
  if len(page.ids)!=len(set(page.ids)):errors.append(f'{path}: duplicate id')
  if re.search(r'UZUPEŁNIJ|TODO|wkrótce|przykładowa|peppyluck4',text,re.I):errors.append(f'{path}: draft content')
- if '6332240252'not in text or 'Puchary i Medale Sp. z o.o.'not in text:errors.append(f'{path}: seller')
+ if '/dane-sprzedawcy/' not in text or '/dostawa-i-platnosci/' not in text:errors.append(f'{path}: legal navigation')
  for raw in page.links:
   u=urlsplit(raw)
   if u.scheme or u.netloc:continue

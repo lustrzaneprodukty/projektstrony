@@ -70,3 +70,11 @@ Brakujące dane i powyższe ograniczenia nie zostały zamaskowane fikcyjnymi inf
 - Dostawy wyłącznie InPost: Paczkomat w Polsce 14,99 PLN, kurier w Polsce 17,99 PLN, przesyłka międzynarodowa 99,00 PLN. Cennik konsumencki przedstawiono jako brutto. Zaktualizowano regulamin, stronę dostaw i informację o odbiorcy danych w polityce prywatności.
 - Nie dopisano krajów ani gwarantowanych terminów bez potwierdzenia. Dostępność zagranicznego doręczenia jest potwierdzana przed zawarciem umowy.
 - Nadal brak aktywnego checkoutu i Stripe, zgodnie z ustalonym zakresem. Uzupełnienie stopki nie uruchamia sprzedaży ani integracji przewoźnika.
+
+## Korekta prezentacji stopki — 14.10.2026
+
+Na wyraźne życzenie właściciela usunięto ze wspólnej stopki rozbudowany blok danych rejestrowych i cennik wysyłek. Stopka zachowuje markę, kontakt i linki do podstron. Pełne dane spółki (w tym sąd i kapitał) pozostają w zakładce Dane sprzedawcy i dokumentach prawnych; ceny InPost pozostają w Dostawie i płatnościach oraz regulaminie. Ta korekta zastępuje wcześniejszy opis umieszczenia danych i cen bezpośrednio w stopce. Nie oznacza zakończenia odrębnego audytu prawnego ani potwierdzenia wdrożenia na Vercel.
+
+## Film w sekcji personalizacji — 14.10.2026
+
+Na życzenie właściciela usunięto kontrolki filmu oraz automatyczne zatrzymanie przy preferencji ograniczonego ruchu. Film ma autoplay, muted, loop i playsinline. Odtwarzanie automatyczne zależy także od zasad przeglądarki i urządzenia. Brak możliwości zatrzymania ruchomego materiału wymaga uwzględnienia w końcowej ocenie dostępności (WCAG 2.2.2); ta zmiana nie jest deklaracją zgodności dostępności.
